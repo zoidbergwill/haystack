@@ -3,7 +3,7 @@ data:
   haystack-ui.json: |
     {
       "port": 8080,
-      "cluster": true,
+      "cluster": false,
       "upstreamTimeout": 30000,
       "enableServicePerformance": false,
       "enableServiceLevelTrends": false,
@@ -14,20 +14,16 @@ data:
       },
       "grpcOptions": {
         "grpc.max_receive_message_length": 52428800
-      }
+      },
       "connectors": {
         "traces": {
-          "connectorName": "haystack",
-          "haystackHost": "trace-reader",
-          "haystackPort": 8080,
-          "serviceRefreshIntervalInSecs": 60,
-          "fieldKeys": [],
+          "connectorName": "zipkin",
+          "zipkinUrl": "http://zipkin/api/v2"
         },
         "trends": {
           "connectorName": "haystack",
           "metricTankUrl": "http://metrictank:6060",
           "encoder": "base64"
-
         },
         "alerts": {
           "connectorName": "haystack",
