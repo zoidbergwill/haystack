@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"apps/v1beta2","kind":"Deployment","metadata":{"annotations":{},"labels":{"k8s-app":"cassandra"},"name":"cassandra","namespace":"haystack-apps"},"spec":{"replicas":1,"selector":{"matchLabels":{"k8s-app":"cassandra"}},"template":{"metadata":{"labels":{"k8s-app":"cassandra"}},"spec":{"containers":[{"env":[{"name":"MAX_HEAP_SIZE","value":"512m"},{"name":"HEAP_NEWSIZE","value":"512m"}],"image":"cassandra:3.11.0","name":"cassandra","resources":{"limits":{"memory":"1224Mi"},"requests":{"memory":"1224Mi"}}}],"nodeSelector":{"kubernetes.io/hostname":"minikube"}}}}}
   creationTimestamp: null
   generation: 1
   labels:
@@ -13,7 +11,7 @@ metadata:
   selfLink: /apis/extensions/v1beta1/namespaces/haystack-apps/deployments/cassandra
 spec:
   progressDeadlineSeconds: 600
-  replicas: 0
+  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -46,8 +44,6 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
-      nodeSelector:
-        kubernetes.io/hostname: minikube
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
