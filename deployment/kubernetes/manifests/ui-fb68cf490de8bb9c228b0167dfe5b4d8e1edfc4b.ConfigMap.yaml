@@ -1,0 +1,56 @@
+apiVersion: v1
+data:
+  haystack-ui.json: |
+    {
+      "port": 8080,
+      "cluster": true,
+      "upstreamTimeout": 30000,
+      "enableServicePerformance": false,
+      "enableServiceLevelTrends": false,
+      "enableLatencyCostViewer": true,
+      "graphite": {
+        "host": "monitoring-influxdb-graphite.kube-system.svc",
+        "port": 2003
+      },
+      "grpcOptions": {
+        "grpc.max_receive_message_length": 52428800
+      }
+      "connectors": {
+        "traces": {
+          "connectorName": "haystack",
+          "haystackHost": "trace-reader",
+          "haystackPort": 8080,
+          "serviceRefreshIntervalInSecs": 60,
+          "fieldKeys": [],
+        },
+        "trends": {
+          "connectorName": "haystack",
+          "metricTankUrl": "http://metrictank:6060",
+          "encoder": "base64"
+
+        },
+        "alerts": {
+          "connectorName": "haystack",
+          "metricTankUrl": "http://metrictank:6060",
+          "alertFreqInSec": 300,
+          "alertMergeBufferTimeInSec": 60,
+          "subscriptions": {
+              "connectorName": "stub",
+              "enabled": false
+          }
+        }
+      },
+      "enableSSO": 0,
+      "saml": {
+        "callbackUrl": "",
+        "entry_point": "",
+        "issuer": ""
+      },
+      "sessionTimeout": 3600000,
+      "sessionSecret": ""
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: ui-fb68cf490de8bb9c228b0167dfe5b4d8e1edfc4b
+  selfLink: /api/v1/namespaces/haystack-apps/configmaps/ui-fb68cf490de8bb9c228b0167dfe5b4d8e1edfc4b

@@ -1,0 +1,39 @@
+apiVersion: v1
+data:
+  span-timeseries-transformer.conf: |
+    health.status.path = "/app/isHealthy"
+
+    kafka {
+      close.timeout.ms = 30000
+
+      streams {
+        application.id = "span-timeseries-transformer-v2"
+        bootstrap.servers = "kafka-service.haystack-apps.svc.cluster.local:9092"
+        num.stream.threads = 3
+        commit.interval.ms = 3000
+        auto.offset.reset = latest
+        timestamp.extractor = "com.expedia.www.haystack.commons.kstreams.SpanTimestampExtractor"
+      }
+
+      producer {
+        topic = "metric-data-points"
+      }
+
+      consumer {
+        topic = "proto-spans"
+      }
+    }
+
+    // there are three types of encoders that are used on service and operation names:
+    // 1) periodreplacement: replaces all periods with 3 underscores
+    // 2) base64: base64 encodes the full name with a padding of _
+    // 3) noop: does not perform any encoding
+    metricpoint.encoder.type = "periodreplacement"
+    enable.metricpoint.service.level.generation = false
+
+    blacklist.services = []
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: transformer-658ea1e33f1104d5b898cc42b21c51debb350a21
+  selfLink: /api/v1/namespaces/haystack-apps/configmaps/transformer-658ea1e33f1104d5b898cc42b21c51debb350a21

@@ -1,0 +1,55 @@
+apiVersion: v1
+data:
+  actions.yml: |-
+    actions:
+      1:
+        action: delete_indices
+        options:
+          ignore_empty_list: True
+          timeout_override:
+          continue_if_exception: False
+          disable_action: False
+        filters:
+        - filtertype: pattern
+          kind: prefix
+          value: haystack-traces-
+          exclude:
+        - filtertype: age
+          source: name
+          direction: older
+          timestring: "%Y-%m-%d"
+          unit: days
+          unit_count: 4
+          exclude:
+  curator.yml: |-
+    client:
+      hosts:
+        - elasticsearch
+      port: 9200
+      url_prefix:
+      use_ssl: False
+      certificate:
+      client_cert:
+      client_key:
+      aws_key:
+      aws_secret_key:
+      aws_region:
+      ssl_no_validate: False
+      http_auth:
+      timeout: 30
+      master_only: False
+    logging:
+      loglevel: DEBUG
+      logfile:
+      logformat: default
+      blacklist: [elasticsearch, urllib3]
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"actions.yml":"actions:\n  1:\n    action: delete_indices\n    options:\n      ignore_empty_list: True\n      timeout_override:\n      continue_if_exception: False\n      disable_action: False\n    filters:\n    - filtertype: pattern\n      kind: prefix\n      value: haystack-traces-\n      exclude:\n    - filtertype: age\n      source: name\n      direction: older\n      timestring: \"%Y-%m-%d\"\n      unit: days\n      unit_count: 4\n      exclude:","curator.yml":"client:\n  hosts:\n    - elasticsearch\n  port: 9200\n  url_prefix:\n  use_ssl: False\n  certificate:\n  client_cert:\n  client_key:\n  aws_key:\n  aws_secret_key:\n  aws_region:\n  ssl_no_validate: False\n  http_auth:\n  timeout: 30\n  master_only: False\nlogging:\n  loglevel: DEBUG\n  logfile:\n  logformat: default\n  blacklist: [elasticsearch, urllib3]"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"curator-es-haystack-traces-index-store"},"name":"curator-es-haystack-traces-index-store","namespace":"haystack-apps"}}
+  creationTimestamp: null
+  labels:
+    app: curator-es-haystack-traces-index-store
+  name: curator-es-haystack-traces-index-store
+  selfLink: /api/v1/namespaces/haystack-apps/configmaps/curator-es-haystack-traces-index-store
