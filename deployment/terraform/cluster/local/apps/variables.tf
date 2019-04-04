@@ -4,6 +4,10 @@ variable "haystack_cluster_name" {
   default = "haystack"
 }
 
+variable "domain_name" {
+  default = "local"
+}
+
 # ========================================
 # Haystack
 # ========================================
@@ -36,6 +40,7 @@ variable "traces" {
     backend_memory_request = "250"
     backend_memory_limit = "250"
     backend_jvm_memory_limit = "200"
+    backend_environment_overrides = ""
   }
 }
 
@@ -61,6 +66,9 @@ variable "trends" {
     timeseries_aggregator_memory_limit = "250"
     timeseries_aggregator_jvm_memory_limit = "200"
     timeseries_aggregator_enable_metrics_sink = true
+    timeseries_aggregator_histogram_max_value = 1800000
+    timeseries_aggregator_histogram_precision = 2
+    timeseries_aggregator_histogram_value_unit = "millis"
   }
 }
 
