@@ -31,17 +31,38 @@ spec:
       - image: zookeeper:3.4.12
         imagePullPolicy: IfNotPresent
         name: zookeeper
+        env:
+        - name: ZOO_SERVERS
+          value: server.1=0.0.0.0:2888:3888
         resources:
           limits:
-            memory: 1224Mi
+            memory: 512Mi
           requests:
             cpu: 100m
-            memory: "1224"
+            memory: 512Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /conf
+          name: config
+        - mountPath: /data
+          name: data
+        - mountPath: /datalog
+          name: datalog
+        - mountPath: /logs
+          name: logs
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: config
+      - emptyDir: {}
+        name: data
+      - emptyDir: {}
+        name: datalog
+      - emptyDir: {}
+        name: logs
 status: {}

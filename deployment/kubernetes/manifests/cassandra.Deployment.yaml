@@ -33,7 +33,7 @@ spec:
           value: 512m
         - name: HEAP_NEWSIZE
           value: 512m
-        image: cassandra:3.11.0
+        image: cassandra:3.11.3
         imagePullPolicy: IfNotPresent
         name: cassandra
         resources:
@@ -46,6 +46,7 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
+      securityContext:
+        runAsUser: 999
       terminationGracePeriodSeconds: 30
 status: {}

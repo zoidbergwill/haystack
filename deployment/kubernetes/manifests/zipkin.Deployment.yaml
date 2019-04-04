@@ -44,9 +44,9 @@ spec:
         name: zipkin
         resources:
           limits:
-            memory: 1224Mi
+            memory: 512Mi
           requests:
-            memory: 1224Mi
+            memory: 512Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
