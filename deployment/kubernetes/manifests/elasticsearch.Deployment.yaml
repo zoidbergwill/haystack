@@ -45,6 +45,7 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
+      securityContext:
+        runAsUser: 100
       terminationGracePeriodSeconds: 30
 status: {}
