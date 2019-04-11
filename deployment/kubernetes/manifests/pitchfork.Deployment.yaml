@@ -31,6 +31,14 @@ spec:
       - env:
         - name: PITCHFORK_FORWARDERS_ZIPKIN_HTTP_ENDPOINT
           value: http://zipkin:9411/api/v2/spans
+        - name: PITCHFORK_FORWARDERS_ZIPKIN_HTTP_ENABLED
+          value: "true"
+        - name: PITCHFORK_FORWARDERS_LOGGING_ENABLED
+          value: "true"
+        - name: PITCHFORK_FORWARDERS_LOGGING_LOG_FULL_SPAN
+          value: "true"
+        - name: PITCHFORK_INGRESS_KAFKA_ENABLED
+          value: "true"
         image: hotelsdotcom/pitchfork
         imagePullPolicy: IfNotPresent
         name: pitchfork
