@@ -8,7 +8,7 @@ data:
 
       streams {
         application.id = "span-timeseries-transformer-v2"
-        bootstrap.servers = "kafka-service.haystack-apps.svc.cluster.local:9092"
+        bootstrap.servers = "kafka-service:9092"
         num.stream.threads = 3
         commit.interval.ms = 3000
         auto.offset.reset = latest

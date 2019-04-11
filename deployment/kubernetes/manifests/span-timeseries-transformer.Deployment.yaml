@@ -41,7 +41,7 @@ spec:
           value: 200m
         - name: JAVA_XMX
           value: 200m
-        image: expediadotcom/haystack-span-timeseries-transformer:1.1
+        image: zoidbergwill/haystack-span-timeseries-transformer
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:

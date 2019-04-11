@@ -32,7 +32,7 @@ spec:
         - name: HAYSTACK_PROP_CASSANDRA_ENDPOINTS
           value: cassandra
         - name: HAYSTACK_GRAPHITE_HOST
-          value: monitoring-influxdb-graphite.kube-system.svc
+          value: monitoring-influxdb-graphite
         - name: HAYSTACK_GRAPHITE_PORT
           value: "2003"
         - name: HAYSTACK_GRAPHITE_ENABLED
@@ -40,8 +40,8 @@ spec:
         - name: JAVA_XMS
           value: 200m
         - name: JAVA_XMX
-          value: 200m
-        image: expediadotcom/haystack-trace-backend-cassandra:1.0.10
+          value: 500m
+        image: zoidbergwill/haystack-trace-backend-cassandra
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
@@ -67,7 +67,7 @@ spec:
         - name: HAYSTACK_OVERRIDES_CONFIG_PATH
           value: /config/trace-indexer.conf
         - name: HAYSTACK_GRAPHITE_HOST
-          value: monitoring-influxdb-graphite.kube-system.svc
+          value: monitoring-influxdb-graphite
         - name: HAYSTACK_GRAPHITE_PORT
           value: "2003"
         - name: HAYSTACK_GRAPHITE_ENABLED
@@ -75,8 +75,8 @@ spec:
         - name: JAVA_XMS
           value: 200m
         - name: JAVA_XMX
-          value: 200m
-        image: expediadotcom/haystack-trace-indexer:1.0.10
+          value: 500m
+        image: zoidbergwill/haystack-trace-indexer
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:

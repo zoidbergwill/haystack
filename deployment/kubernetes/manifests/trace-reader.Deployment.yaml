@@ -41,7 +41,7 @@ spec:
           value: 200m
         - name: JAVA_XMX
           value: 200m
-        image: expediadotcom/haystack-trace-backend-cassandra:1.0.10
+        image: zoidbergwill/haystack-trace-backend-cassandra
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
@@ -76,7 +76,7 @@ spec:
           value: 200m
         - name: JAVA_XMX
           value: 200m
-        image: expediadotcom/haystack-trace-reader:1.0.10
+        image: zoidbergwill/haystack-trace-reader
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
