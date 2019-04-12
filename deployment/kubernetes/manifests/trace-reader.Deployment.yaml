@@ -42,7 +42,7 @@ spec:
         - name: JAVA_XMX
           value: 200m
         image: zoidbergwill/haystack-trace-backend-cassandra
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -77,7 +77,7 @@ spec:
         - name: JAVA_XMX
           value: 200m
         image: zoidbergwill/haystack-trace-reader
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:

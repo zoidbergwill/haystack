@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   trace-indexer.conf: |
-    health.status.path = "/app/isHealthy"
+    health.status.path = "/tmp/isHealthy"
 
     span.accumulate {
       store {
