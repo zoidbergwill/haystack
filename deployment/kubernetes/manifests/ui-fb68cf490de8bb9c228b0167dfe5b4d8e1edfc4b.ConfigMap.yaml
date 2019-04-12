@@ -17,8 +17,11 @@ data:
       },
       "connectors": {
         "traces": {
-          "connectorName": "zipkin",
-          "zipkinUrl": "http://zipkin:9411/api/v2"
+          "connectorName": "haystack",
+          "haystackHost": "trace-reader",
+          "haystackPort": 8080,
+          "serviceRefreshIntervalInSecs": 60,
+          "fieldKeys": []
         },
         "trends": {
           "connectorName": "haystack",
