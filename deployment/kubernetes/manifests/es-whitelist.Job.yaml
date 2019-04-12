@@ -2,11 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"es-whitelist","namespace":"haystack-apps"},"spec":{"template":{"spec":{"containers":[{"args":["-XPUT","-H","Content-Type: application/json","-d","@/data/whitelist.json","http://elasticsearch:9200/reload-configs/indexing-fields/1"],"command":["curl"],"image":"yauritux/busybox-curl","name":"es-whitelist","volumeMounts":[{"mountPath":"/data","name":"data"}]}],"restartPolicy":"OnFailure","volumes":[{"configMap":{"name":"whitelist-json"},"name":"data"}]}}}}
   creationTimestamp: null
   labels:
-    controller-uid: cfc014df-45db-11e9-acfe-92c2ac6404b2
     job-name: es-whitelist
   name: es-whitelist
   selfLink: /apis/batch/v1/namespaces/haystack-apps/jobs/es-whitelist
@@ -14,14 +11,10 @@ spec:
   backoffLimit: 6
   completions: 1
   parallelism: 1
-  selector:
-    matchLabels:
-      controller-uid: cfc014df-45db-11e9-acfe-92c2ac6404b2
   template:
     metadata:
       creationTimestamp: null
       labels:
-        controller-uid: cfc014df-45db-11e9-acfe-92c2ac6404b2
         job-name: es-whitelist
     spec:
       containers:
