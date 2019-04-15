@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   span-timeseries-transformer.conf: |
-    health.status.path = "/app/isHealthy"
+    health.status.path = "/tmp/isHealthy"
 
     kafka {
       close.timeout.ms = 30000

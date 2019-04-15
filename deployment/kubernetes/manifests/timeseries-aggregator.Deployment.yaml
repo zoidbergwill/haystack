@@ -48,7 +48,7 @@ spec:
             command:
             - grep
             - "true"
-            - /app/isHealthy
+            - /tmp/isHealthy
           failureThreshold: 6
           initialDelaySeconds: 30
           periodSeconds: 5
