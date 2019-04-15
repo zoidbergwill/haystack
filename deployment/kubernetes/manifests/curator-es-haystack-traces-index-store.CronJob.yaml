@@ -1,0 +1,44 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: curator-es-haystack-traces-index-store
+spec:
+  concurrencyPolicy: Allow
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - args:
+            - --config
+            - /config/curator.yml
+            - /config/actions.yml
+            image: bobrik/curator:5.4.0
+            imagePullPolicy: IfNotPresent
+            name: curator-es-haystack-traces-index-store
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /config
+              name: config
+          dnsPolicy: ClusterFirst
+          restartPolicy: OnFailure
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: curator-es-haystack-traces-index-store
+            name: config
+  schedule: 0 */4 * * *
+  successfulJobsHistoryLimit: 3
+  suspend: false
+status: {}

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    k8s-app: pitchfork
+  name: pitchfork
+spec:
+  ports:
+  - port: 9411
+    protocol: TCP
+    targetPort: 9411
+  selector:
+    k8s-app: pitchfork
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  whitelist.json: |-
+    {
+        "fields": [{
+            "name": "error",
+            "type": "string",
+            "enabled": true,
+            "searchContext": "trace"
+        }]
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: whitelist-json

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    k8s-app: cassandra
+  name: cassandra
+spec:
+  ports:
+  - port: 9042
+    protocol: TCP
+    targetPort: 9042
+  selector:
+    k8s-app: cassandra
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

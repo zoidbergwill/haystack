@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    k8s-app: haystack-ui
+  name: haystack-ui
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    k8s-app: haystack-ui
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
