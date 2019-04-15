@@ -38,11 +38,11 @@ spec:
         - name: MT_CASSANDRA_ADDRS
           value: cassandra:9042
         - name: MT_KAFKA_MDM_IN_BROKERS
-          value: kafka-service.haystack-apps.svc.cluster.local:9092
+          value: kafka-service:9092
         - name: MT_CASSANDRA_IDX_HOSTS
           value: cassandra:9042
         - name: MT_STATS_ADDR
-          value: monitoring-influxdb-graphite.kube-system.svc:2003
+          value: monitoring-influxdb-graphite:2003
         - name: MT_MEMORY_IDX_TAG_SUPPORT
           value: "true"
         - name: MT_PROFTRIGGER_PATH
