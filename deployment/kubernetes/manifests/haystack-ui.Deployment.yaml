@@ -31,7 +31,7 @@ spec:
       - env:
         - name: HAYSTACK_OVERRIDES_CONFIG_PATH
           value: /config/haystack-ui.json
-        image: expediadotcom/haystack-ui:1.1
+        image: expediadotcom/haystack-ui:1.1.4
         imagePullPolicy: IfNotPresent
         name: haystack-ui
         resources:
