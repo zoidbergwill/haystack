@@ -7,6 +7,11 @@ data:
             "type": "string",
             "enabled": true,
             "searchContext": "trace"
+        },{
+          "name": "traceId",
+          "type": "string",
+          "enabled": true,
+          "searchContext": "trace"
         }]
     }
 kind: ConfigMap
