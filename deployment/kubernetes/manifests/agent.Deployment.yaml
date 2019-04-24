@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: agent
+  name: agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agent
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: agent
+    spec:
+      containers:
+      - image: expediadotcom/haystack-agent
+        name: haystack-agent
+        env:
+        - name: HAYSTACK_PROP_AGENTS_SPANS_DISPATCHERS_KAFKA_BOOTSTRAP_SERVERS
+          value: kafka-service:9092
+        ports:
+        - containerPort: 34000
+        resources: {}
+status: {}
