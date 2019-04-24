@@ -42,7 +42,7 @@ spec:
         - name: MT_CASSANDRA_IDX_HOSTS
           value: cassandra:9042
         - name: MT_STATS_ADDR
-          value: monitoring-influxdb-graphite:2003
+          value: graphite:2003
         - name: MT_MEMORY_IDX_TAG_SUPPORT
           value: "true"
         - name: MT_PROFTRIGGER_PATH

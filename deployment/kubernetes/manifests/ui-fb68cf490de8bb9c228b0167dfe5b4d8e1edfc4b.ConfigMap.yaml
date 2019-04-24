@@ -9,7 +9,7 @@ data:
       "enableServiceLevelTrends": false,
       "enableLatencyCostViewer": true,
       "graphite": {
-        "host": "monitoring-influxdb-graphite",
+        "host": "graphite",
         "port": 2003
       },
       "grpcOptions": {

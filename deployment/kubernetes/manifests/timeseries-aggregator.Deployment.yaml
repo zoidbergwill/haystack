@@ -32,11 +32,11 @@ spec:
         - name: HAYSTACK_OVERRIDES_CONFIG_PATH
           value: /config/timeseries-aggregator.conf
         - name: HAYSTACK_GRAPHITE_HOST
-          value: monitoring-influxdb-graphite.kube-system.svc
+          value: graphite
         - name: HAYSTACK_GRAPHITE_PORT
           value: "2003"
         - name: HAYSTACK_GRAPHITE_ENABLED
-          value: "false"
+          value: "true"
         - name: JAVA_XMS
           value: 200m
         - name: JAVA_XMX

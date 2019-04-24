@@ -32,13 +32,13 @@ spec:
         - name: HAYSTACK_PROP_CASSANDRA_ENDPOINTS
           value: cassandra
         - name: HAYSTACK_GRAPHITE_HOST
-          value: monitoring-influxdb-graphite
+          value: graphite
         - name: HAYSTACK_GRAPHITE_PORT
           value: "2003"
         - name: HAYSTACK_GRAPHITE_ENABLED
-          value: "false"
+          value: "true"
         - name: JAVA_XMS
-          value: 200m
+          value: 250m
         - name: JAVA_XMX
           value: 500m
         image: zoidbergwill/haystack-trace-backend-cassandra
@@ -56,24 +56,24 @@ spec:
         name: storage-backend-cassandra
         resources:
           limits:
-            cpu: 500m
-            memory: 250Mi
+            cpu: 1
+            memory: 1000Mi
           requests:
-            cpu: 100m
-            memory: 250Mi
+            cpu: 500m
+            memory: 500Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       - env:
         - name: HAYSTACK_OVERRIDES_CONFIG_PATH
           value: /config/trace-indexer.conf
         - name: HAYSTACK_GRAPHITE_HOST
-          value: monitoring-influxdb-graphite
+          value: graphite
         - name: HAYSTACK_GRAPHITE_PORT
           value: "2003"
         - name: HAYSTACK_GRAPHITE_ENABLED
-          value: "false"
+          value: "true"
         - name: JAVA_XMS
-          value: 200m
+          value: 250m
         - name: JAVA_XMX
           value: 500m
         image: zoidbergwill/haystack-trace-indexer
@@ -92,11 +92,11 @@ spec:
         name: trace-indexer
         resources:
           limits:
-            cpu: "1"
-            memory: 250Mi
+            cpu: 1
+            memory: 1000Mi
           requests:
-            cpu: 100m
-            memory: 250Mi
+            cpu: 500m
+            memory: 500Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
